@@ -28,7 +28,7 @@ def scrape_info():
     results2 = soup2.find('article', class_='carousel_item')
     image_url= results2['style'].split("'")
     img_url_tot = image_url[1]
-    img_url_full = url2 + img_url_tot
+    img_url_full = 'https://www.jpl.nasa.gov' + img_url_tot
 
     #Visit the Mars twitter site and scrape the latest tweet and 
     url3 = 'https://twitter.com/marswxreport?lang=en'
@@ -56,9 +56,9 @@ def scrape_info():
     soup9 = BeautifulSoup(html9, 'html.parser')
     results9 = soup9.find_all('div', class_='description')
     #Create dictionary and a list to hold the scraped titles and URLs
-    mars_dict={}
     hemi_image_url = []
 
+    #Loop over the websites and and grab the titles and URLs then append them to the dictionary and list
     #Loop over the websites and and grab the titles and URLs then append them to the dictionary and list
     for result in results9:
         res_link = result.find('a')
@@ -70,9 +70,7 @@ def scrape_info():
         soup10 = BeautifulSoup(html10, 'html.parser')
         image_link = soup10.find('a', target="_blank")
         href = image_link['href']
-        mars_dict['title']=title
-        mars_dict['image_url']=href
-        hemi_image_url.append(mars_dict)
+        hemi_image_url.append({'title':title,'image_url':href})
 
     mars_data_all = {
         'latest_news_title':news_title,
