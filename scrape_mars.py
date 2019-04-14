@@ -8,7 +8,7 @@ def init_browser():
     return Browser('chrome', **executable_path, headless=False)
 
 
-def scrape():
+def scrape_info():
     browser = init_browser()
 
     #Visit the mars news website and scrape the title and latest story
