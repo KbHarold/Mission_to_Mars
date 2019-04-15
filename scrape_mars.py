@@ -16,7 +16,7 @@ def scrape_info():
     browser.visit(url)
     html = browser.html
     soup = BeautifulSoup(html, 'lxml')
-    results = soup.find('div', class_='image_and_description_container')
+    #results = soup.find('div', class_='image_and_description_container')
     news_title = soup.find('div', class_='content_title').text
     news_p = soup.find('div', class_='article_teaser_body').text
 
