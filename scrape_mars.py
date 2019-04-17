@@ -37,7 +37,9 @@ def scrape_info():
     soup3 = BeautifulSoup(html3, 'lxml')
     results3 = soup3.find('ol', class_='stream-items js-navigable-stream')
     mars_weather  = results3.find('p', class_= 'TweetTextSize TweetTextSize--normal js-tweet-text tweet-text').text
-    mars_weather =mars_weather.replace('pic.twitter.com/awJfx8w2YE',' ')
+    mars_weather = mars_weather.split('.twitter')
+    del mars_weather[1]
+    mars_weather=str(mars_weather[0])
 
     #Visit the Mars facts site and scrape the table data
     url4 = 'https://space-facts.com/mars/'
